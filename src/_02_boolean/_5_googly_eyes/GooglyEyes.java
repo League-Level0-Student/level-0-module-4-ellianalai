@@ -37,28 +37,57 @@ import processing.core.PImage;
  *    to the boundary. Put this code before you draw the pupils.
  */
 public class GooglyEyes extends PApplet {
-    static final int WIDTH = 800;
-    static final int HEIGHT = 600;
-    
-    PImage face;
-    
-    @Override
-    public void settings() {
-        size(WIDTH, HEIGHT);
-    }
-    
-    @Override
-    public void setup() {
-    	face = loadImage("dog.png");
-    	face.resize(WIDTH, HEIGHT);
-    }
+	static final int WIDTH = 800;
+	static final int HEIGHT = 800;
 
-    @Override
-    public void draw() {
+	PImage face;
+	int last_x = 257;
+	int last_y = 544;
+	@Override
+	public void settings() {
+		size(WIDTH, HEIGHT);
+	}
 
-    }
+	@Override
+	public void setup() {
+		face = loadImage("dog.png");
+		face.resize(WIDTH, HEIGHT);
 
-    static public void main(String[] args) {
-        PApplet.main(GooglyEyes.class.getName());
-    }
+
+
+	}
+
+	@Override
+	public void draw() {
+		background(face);
+		fill(255,255,255);
+		ellipse(257,544,80,80);
+		fill(255,255,255);
+		ellipse(531,574,80,80);
+		if (mouseX>223 && mouseX<288 && mouseY>510 && mouseY<575) {
+			fill(0,0,0);
+			ellipse(mouseX,mouseY,30,30);
+			ellipse(mouseX+274,mouseY+30,30,30);
+			last_x = mouseX;
+			last_y=mouseY;
+		}
+		else {
+			fill(0,0,0);
+			ellipse(last_x,last_y,30,30);
+			ellipse(last_x+274,last_y+30,30,30);
+		}
+
+
+
+
+
+
+		System.out.println(mouseY);
+
+	}
+
+	static public void main(String[] args) {
+		PApplet.main(GooglyEyes.class.getName());
+
+	}
 }
