@@ -60,7 +60,13 @@ public class WheresWaldo extends PApplet {
 	public void draw() {
 		println("X: " + mouseX + " Y: " + mouseY);
 		if(mousePressed) {
-			//if (mouseX>375 && mouseX<415)
+			if (mouseX>375 && mouseX<415 && mouseY<283 && mouseY>203) {
+				playWhoohoo();
+				
+			}
+			else {
+				playDoh();
+			}
 		}
 	}
 
